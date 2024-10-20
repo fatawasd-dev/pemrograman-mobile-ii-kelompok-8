@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "699322756942",
+    "project_id": "pemrograman-mobile-ii",
+    "storage_bucket": "pemrograman-mobile-ii.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:699322756942:android:8810c3a34148e9bba8f81f",
+        "android_client_info": {
+          "package_name": "com.kelompok8.todoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxZ1uph571hfgr7gOB3h2138qkpLJF87g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:699322756942:android:754aeb541faaf2e8a8f81f",
+        "android_client_info": {
+          "package_name": "com.todoappkelompok8.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxZ1uph571hfgr7gOB3h2138qkpLJF87g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
