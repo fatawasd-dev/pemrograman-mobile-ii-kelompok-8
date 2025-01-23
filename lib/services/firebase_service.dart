@@ -5,12 +5,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:excel/excel.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_crud/models/todo_model.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:rxdart/rxdart.dart';
 
 class FirebaseService {
   final CollectionReference todosCollection =
       FirebaseFirestore.instance.collection('todos');
+  final BehaviorSubject<List<TodoModel>> _todosSubject = BehaviorSubject<List<TodoModel>>();
+
+  FirebaseService() {
+    todosCollection.snapshots().listen((snapshot) {
+      final todos = snapshot.docs.map((doc) {
+        return TodoModel.fromMap(doc.data() as Map<String, dynamic>, doc.id);
+      }).toList();
+      _todosSubject.add(todos);
+    });
+  }
 
   Future<void> addTodo(TodoModel todo) async {
     try {
@@ -21,14 +31,7 @@ class FirebaseService {
     }
   }
 
-  // Gunakan satu metode untuk mendapatkan stream
-  Stream<List<TodoModel>> getTodosStream() {
-    return todosCollection.snapshots().map((snapshot) {
-      return snapshot.docs.map((doc) {
-        return TodoModel.fromMap(doc.data() as Map<String, dynamic>, doc.id);
-      }).toList();
-    });
-  }
+  Stream<List<TodoModel>> get todosStream => _todosSubject.stream;
 
   Future<void> updateTodo(TodoModel todo) async {
     try {
@@ -140,5 +143,9 @@ class FirebaseService {
     } else {
       print('Tidak ada file yang dipilih');
     }
+  }
+
+  void dispose() {
+    _todosSubject.close();
   }
 }
