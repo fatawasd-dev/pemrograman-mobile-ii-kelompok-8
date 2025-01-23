@@ -63,7 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '699322756942',
     projectId: 'pemrograman-mobile-ii',
     storageBucket: 'pemrograman-mobile-ii.appspot.com',
-    iosBundleId: 'com.example.flutterCrud',
+    iosBundleId: 'com.patamorgana.flutterCrud',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -72,7 +72,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '699322756942',
     projectId: 'pemrograman-mobile-ii',
     storageBucket: 'pemrograman-mobile-ii.appspot.com',
-    iosBundleId: 'com.example.flutterCrud',
+    iosBundleId: 'com.patamorgana.flutterCrud',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(

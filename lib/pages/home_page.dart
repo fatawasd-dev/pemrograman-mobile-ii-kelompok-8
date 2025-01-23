@@ -21,11 +21,26 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Todo List'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AddPage()),
+            icon: const Icon(
+              Icons.upload,
+              color: Colors.white,
+            ),
+            onPressed: () async {
+              await _firebaseService.importExcelFile();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('File Excel berhasil diimport!')),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.download,
+              color: Colors.white,
+            ),
+            onPressed: () async {
+              await _firebaseService.downloadTodosToExcel();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('File Excel berhasil diunduh ke folder download!')),
               );
             },
           ),
